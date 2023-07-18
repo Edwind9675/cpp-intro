@@ -71,20 +71,26 @@ class Line {
   }
   };
   class Polygon{
+    public: 
     std::vector<Point> poly_points;
-    Polygon (std::vector<Point> c) {
+    Polygon (std::vector<Point> &c):c(c) {
       poly_points = c;
     }
-    double area {
-      
+    double area() {
+      double area = 0;
+      for (int i = 1; i < c.size()-1; i++){
+          //trigarea c = trigarea(poly_points[0], poly_points[i], poly_points[i+1]);
+          area += Triangle(c[0], c[i], c[i+1]).area();
+      }
+      return area;
     }
 
     
     //for (int i=0, i++){
 
-    }
+    };
 
-  };
+  
 
 
 
